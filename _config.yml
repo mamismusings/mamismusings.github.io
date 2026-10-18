@@ -45,4 +45,4 @@ comments:
 
 
 # Likes (no sign-in needed). Paste the Google Apps Script web-app URL here — see tools/likes.gs
-likes_endpoint: ""
+likes_endpoint: "https://script.google.com/macros/s/AKfycbzpC32VjIo_DnTprBAG5LhuBeoIQfnCyevkT3nQLsxEt3R8FKG3vIY_RZYrJiYJD2mJ/exec"
