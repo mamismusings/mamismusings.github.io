@@ -1,0 +1,37 @@
+# ---------------------------------------------------------------
+#  Mami's Musings — site settings
+# ---------------------------------------------------------------
+title: "Mami's Musings"
+title_ta: "மாமியின் எண்ணங்கள்"
+description: "மாமியின் கைவண்ணத்தில் உருவான ஓவியங்களும், அவற்றின் பின்னால் உள்ள சிறு எண்ணங்களும்."
+author: "மாமி"
+lang: ta
+
+url: "https://mamismusings.github.io"
+baseurl: ""
+
+# All publish_on times are India time
+timezone: Asia/Kolkata
+
+# Every picture is one file in _musings/  (see README.md)
+collections:
+  musings:
+    output: true
+    permalink: /musings/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: musings
+    values:
+      layout: musing
+
+markdown: kramdown
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - tools
+  - inbox
+  - vendor
+  - .DS_Store

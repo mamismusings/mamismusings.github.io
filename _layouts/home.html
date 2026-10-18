@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{% assign musings = site.musings | sort: "order" %}
+<section class="intro">
+  <p class="intro-en">{{ site.title }}</p>
+  <h1>{{ site.title_ta }}</h1>
+  <svg class="squiggle" viewBox="0 0 200 12" aria-hidden="true"><path d="M2 8 C 30 2, 50 12, 80 6 S 140 2, 198 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  <p class="intro-text">{{ site.description }}</p>
+  {{ content }}
+</section>
+
+<ul class="gallery">
+{% for m in musings %}
+  {% assign label = m.caption | default: m.caption_en %}
+  <li class="card">
+    <a href="{{ m.url | relative_url }}" class="{% if m.status != "live" %}not-live{% endif %}">
+      <img src="{{ m.thumb | default: m.image | relative_url }}?v={{ site.time | date: '%s' }}"
+           alt="{% if label == blank %}மாமியின் ஓவியம்{% else %}{{ label }}{% endif %}"
+           loading="lazy" width="480" height="640">
+      {% if jekyll.environment == "development" and m.status != "live" %}<span class="badge badge-{{ m.status }}">{% if m.status == "draft" %}வரைவு · draft{% else %}{{ m.go_live | date: "%d %b %Y · %H:%M" }}{% endif %}</span>{% endif %}
+      <div class="card-words">
+        {% unless m.caption == blank %}<h2>{{ m.caption }}</h2>{% endunless %}
+        {% unless m.caption_en == blank %}<p class="hand">{{ m.caption_en }}</p>{% endunless %}
+        {% assign line = m.content | strip_html | strip | truncatewords: 10 %}
+        {% if line != "" %}<p class="card-line">{{ line }}</p>{% endif %}
+        {% if label == blank and line == "" %}<p class="card-num">ஓவியம் {{ m.order }}</p>{% endif %}
+      </div>
+    </a>
+  </li>
+{% endfor %}
+</ul>

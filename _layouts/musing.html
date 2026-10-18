@@ -1,0 +1,30 @@
+---
+layout: default
+---
+{% assign musings = site.musings | sort: "order" %}
+{% assign idx = 0 %}
+{% for m in musings %}{% if m.url == page.url %}{% assign idx = forloop.index0 %}{% endif %}{% endfor %}
+{% assign prev_i = idx | minus: 1 %}
+{% assign next_i = idx | plus: 1 %}
+
+<article class="musing">
+  <figure class="musing-art">
+    <img src="{{ page.image | relative_url }}?v={{ site.time | date: '%s' }}" alt="{{ page.caption | default: page.caption_en | default: 'மாமியின் ஓவியம்' }}">
+  </figure>
+
+  <div class="musing-words">
+    <p class="musing-num">ஓவியம் {{ page.order }}
+      {% if jekyll.environment == "development" and page.status != "live" %}<span class="badge badge-{{ page.status }}">{% if page.status == "draft" %}வரைவு · draft — not scheduled{% else %}goes live {{ page.go_live | date: "%d %b %Y · %H:%M" }}{% endif %}</span>{% endif %}</p>
+    {% unless page.caption == blank %}<h1>{{ page.caption }}</h1>{% endunless %}
+    {% unless page.caption_en == blank %}<p class="hand">{{ page.caption_en }}</p>{% endunless %}
+    <div class="message">
+      {{ content }}
+    </div>
+  </div>
+</article>
+
+<nav class="pager" aria-label="ஓவியங்கள்">
+  {% if idx > 0 %}{% assign p = musings[prev_i] %}<a class="prev" href="{{ p.url | relative_url }}">← முந்தையது</a>{% else %}<span></span>{% endif %}
+  <a class="all" href="{{ '/' | relative_url }}">அனைத்தும்</a>
+  {% if next_i < musings.size %}{% assign n = musings[next_i] %}<a class="next" href="{{ n.url | relative_url }}">அடுத்தது →</a>{% else %}<span></span>{% endif %}
+</nav>
