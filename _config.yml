@@ -35,3 +35,11 @@ exclude:
   - inbox
   - vendor
   - .DS_Store
+
+# Comments (giscus → GitHub Discussions). Fill repo_id and category_id from https://giscus.app
+comments:
+  repo: "mamismusings/mamismusings.github.io"
+  repo_id: "R_kgDOVN_k9w"
+  category: "Comments"
+  category_id: "DIC_kwDOVN_k984DI1KX"
+  

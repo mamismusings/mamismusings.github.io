@@ -28,3 +28,5 @@ layout: default
   <a class="all" href="{{ '/' | relative_url }}">அனைத்தும்</a>
   {% if next_i < musings.size %}{% assign n = musings[next_i] %}<a class="next" href="{{ n.url | relative_url }}">அடுத்தது →</a>{% else %}<span></span>{% endif %}
 </nav>
+
+{% include comments.html %}
