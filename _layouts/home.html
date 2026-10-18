@@ -24,6 +24,7 @@ layout: default
         {% unless m.caption_en == blank %}<p class="hand">{{ m.caption_en }}</p>{% endunless %}
         {% assign line = m.content | strip_html | strip | truncatewords: 10 %}
         {% if line != "" %}<p class="card-line">{{ line }}</p>{% endif %}
+        {% if site.likes_endpoint != blank %}<p class="card-likes" hidden><span aria-hidden="true">♥</span> <span data-like-count="{{ m.slug }}"></span></p>{% endif %}
         {% if label == blank and line == "" %}<p class="card-num">ஓவியம் {{ m.order }}</p>{% endif %}
       </div>
     </a>

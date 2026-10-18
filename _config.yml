@@ -42,4 +42,7 @@ comments:
   repo_id: "R_kgDOVN_k9w"
   category: "Comments"
   category_id: "DIC_kwDOVN_k984DI1KX"
-  
+
+
+# Likes (no sign-in needed). Paste the Google Apps Script web-app URL here — see tools/likes.gs
+likes_endpoint: ""
